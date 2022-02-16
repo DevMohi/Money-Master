@@ -1,10 +1,12 @@
-let calculateBtn = document.getElementById('calculateBtn')
-let clearBtn = document.getElementById('clearBtn')
+let calculateBtn = gettingInput('calculateBtn')
+let clearBtn = gettingInput('clearBtn')
+let saveBtn = document.getElementById('saveBtn');
 
 function gettingInput(param) {
     return document.getElementById(param);
 }
 
+// clear function 
 function clear(){
     let food = gettingInput('foodCost');
     let rent = gettingInput('rentCost');
@@ -48,20 +50,23 @@ calculateBtn.addEventListener('click', function () {
         // console.log('please enter valid name'); 
         gettingInput('hiddenText').style.display = 'block';
     }
+    else{
 
-    // Validating again 
-    if(expense> incomeInput){
-        gettingInput('hiddenMessage2').style.display = 'block';
+        
+        // Validating again 
+        if(expense> incomeInput){
+            gettingInput('hiddenMessage2').style.display = 'block';
+            
+        }
+        else{
+            totalExpense.innerText = expense;
+            let newBalance = incomeInput - expense;
+            balance.innerText =newBalance;
+            gettingInput('hiddenMessage2').style.display = 'none';
+            
+        }
         
     }
-    else{
-        totalExpense.innerText = expense;
-        let newBalance = incomeInput - expense;
-        balance.innerText =newBalance;
-        gettingInput('hiddenMessage2').style.display = 'none';
-
-    }
-
 })
 
 // Clearing Fields 
@@ -70,6 +75,21 @@ clearBtn.addEventListener('click',function(){
     clear();
 })
 
+
+// Save button and its uses
+
+saveBtn.addEventListener('click',function(){
+     let saveInput = gettingInput('saveInput');
+     let saveInputAmount  = parseFloat(saveInput.value);
+
+    let savingAmount = gettingInput('savingAmount');
+    let remainingBalance = gettingInput('remaining');
+    let balance = gettingInput('balance').innerText;
+
+    // console.log(saveInputAmount); 
+    savingAmount.innerText = (saveInputAmount/100) * parseFloat(balance);
+    remainingBalance.innerText = parseFloat(balance) - savingAmount.innerText;
+})
 
 
 
