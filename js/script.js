@@ -1,11 +1,15 @@
 // getting all the buttons 
 let calculateBtn = gettingId('calculateBtn')
 let clearBtn = gettingId('clearBtn')
-let saveBtn = document.getElementById('saveBtn');
+let saveBtn = gettingId('saveBtn');
 
 // common gettingId function 
 function gettingId(param) {
     return document.getElementById(param);
+}
+// Block or Hide 
+function displayBlockOrHide(id , noneOrBlock){
+    gettingId(id).style.display = noneOrBlock;
 }
 
 // clear function 
@@ -20,11 +24,11 @@ function clear(){
     let savingAmount = gettingId('savingAmount');
     let remainingBalance = gettingId('remaining');
     let saveInput = gettingId('saveInput');
-    gettingId('hiddenMessage1').style.display = 'none';
-    gettingId('hiddenMessage2').style.display = 'none';
-    gettingId('hiddenMessage3').style.display = 'none';
-    gettingId('hiddenMessage4').style.display = 'none';
 
+    displayBlockOrHide('hiddenMessage1', 'none');
+    displayBlockOrHide('hiddenMessage2', 'none');
+    displayBlockOrHide('hiddenMessage3', 'none');
+    displayBlockOrHide('hiddenMessage4', 'none');
 
     // Clearing all the inputs and innerText 
     food.value = '';
@@ -61,45 +65,37 @@ calculateBtn.addEventListener('click', function () {
 
     // Validating empty fields negative number and isNan 
     if (foodCost == "" || foodCost < 0 || rentCost == "" || rentCost < 0 || clothCost == "" || clothCost < 0 || income== "" || income<0 || isNaN(expense)){
-        // console.log('please enter valid name'); 
         clear();
-        gettingId('hiddenMessage1').style.display = 'block';
+        displayBlockOrHide('hiddenMessage1', 'block');
     }
     else{
-
         // Validating
         if(expense> incomeInput){
             clear();
-            gettingId('hiddenMessage2').style.display = 'block';
-            gettingId('hiddenMessage1').style.display = 'none';
-            
+            displayBlockOrHide('hiddenMessage2', 'block');
+            displayBlockOrHide('hiddenMessage1', 'none');    
         }
         else{
             totalExpense.innerText = expense;
             let newBalance = incomeInput - expense;
             balance.innerText =newBalance;
-            gettingId('hiddenMessage2').style.display = 'none';
-            gettingId('hiddenMessage1').style.display = 'none';
-            
+            displayBlockOrHide('hiddenMessage2', 'none');
+            displayBlockOrHide('hiddenMessage1', 'none');
         }
-        
     }
 })
 
-// Clearing Fields 
-
+// Clearing Fields when clicked on clear button
 clearBtn.addEventListener('click',function(){
     clear();
 })
 
 
 // Save button and its uses
-
 saveBtn.addEventListener('click',function(){
     // getting all the values and innerText needed 
-
     let saveInput = gettingId('saveInput');
-     let saveInputAmount  = parseFloat(saveInput.value);
+    let saveInputAmount  = parseFloat(saveInput.value);
     let savingAmount = gettingId('savingAmount');
     let remainingBalance = gettingId('remaining');
     let balance = gettingId('balance').innerText;
@@ -109,23 +105,21 @@ saveBtn.addEventListener('click',function(){
     // validating isNan and if the value is negative
     if (isNaN(saveInputAmount) || saveInputAmount < 0){
         saveInput.value = '';
-        gettingId('hiddenMessage3').style.display = 'none';
-        gettingId('hiddenMessage4').style.display = 'block';
+        displayBlockOrHide('hiddenMessage3', 'none');
+        displayBlockOrHide('hiddenMessage4', 'block');
     }
     else{
         if (savedAmount > parseFloat(balance)) {
             // console.log('error') 
             saveInput.value = '';
-            gettingId('hiddenMessage3').style.display = 'block';
-            gettingId('hiddenMessage4').style.display = 'none';
-
+            displayBlockOrHide('hiddenMessage3', 'block');
+            displayBlockOrHide('hiddenMessage4', 'none');
         }
         else {
             savingAmount.innerText = savedAmount;
             remainingBalance.innerText = parseFloat(balance) - savingAmount.innerText;
-            gettingId('hiddenMessage3').style.display = 'none';
-            gettingId('hiddenMessage4').style.display = 'none';
-
+            displayBlockOrHide('hiddenMessage3', 'none');
+            displayBlockOrHide('hiddenMessage4', 'none');
         }
     }    
 })
