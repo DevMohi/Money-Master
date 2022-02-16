@@ -121,6 +121,8 @@ saveBtn.addEventListener('click',function(){
             saveInput.value = '';
             displayBlockOrHide('hiddenMessage3', 'block');
             displayBlockOrHide('hiddenMessage4', 'none');
+            savingAmount.innerText = '';
+            remainingBalance.innerText = '';
         }
         else {
             savingAmount.innerText = savedAmount;
