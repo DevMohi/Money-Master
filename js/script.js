@@ -5,6 +5,7 @@ function gettingInput(param) {
     return document.getElementById(param);
 }
 
+
 calculateBtn.addEventListener('click', function () {
 
     let food = gettingInput('foodCost');
@@ -16,32 +17,38 @@ calculateBtn.addEventListener('click', function () {
     let cloth = gettingInput('clothCost');
     let clothCost = cloth.value;
 
-    // Validating 
-    
-    if (foodCost == "" || foodCost < 0 || rentCost == "" || rentCost < 0 || clothCost == "" || clothCost < 0 ){
-        // console.log('please enter valid name'); 
-        gettingInput('hiddenText').style.display = 'block';
-    }
+    // Income 
+    let income = gettingInput('income');
+    let incomeInput = parseFloat(income.value);
+    let balance = gettingInput('balance');
     
     // Total Expense 
     let totalExpense = gettingInput('totalExpenses');
     let expense = parseFloat(foodCost) + parseFloat(rentCost) + parseFloat(clothCost);
-    
-    // Income 
-    let income = gettingInput('income');
-    let incomeInput = parseFloat(income.value);
-    
-    let balance = gettingInput('balance');
-    
-    
+
+    // Validating   
+    if (foodCost == "" || foodCost < 0 || rentCost == "" || rentCost < 0 || clothCost == "" || clothCost < 0 || isNaN(expense)){
+        // console.log('please enter valid name'); 
+        gettingInput('hiddenText').style.display = 'block';
+    }
+
+    // Validating again 
     if(expense> incomeInput){
         gettingInput('hiddenMessage2').style.display = 'block';
+        
     }
     else{
         totalExpense.innerText = expense;
         let newBalance = incomeInput - expense;
         balance.innerText =newBalance;
         gettingInput('hiddenMessage2').style.display = 'none';
+
     }
-    
+
+    // clearing fields 
+    food.value ='';
+    rent.value = '';
+    cloth.value = '';
+    income.value ='';
+
 })
