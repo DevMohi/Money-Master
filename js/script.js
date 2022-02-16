@@ -1,10 +1,27 @@
 let calculateBtn = document.getElementById('calculateBtn')
-
+let clearBtn = document.getElementById('clearBtn')
 
 function gettingInput(param) {
     return document.getElementById(param);
 }
 
+function clear(){
+    let food = gettingInput('foodCost');
+    let rent = gettingInput('rentCost');
+    let cloth = gettingInput('clothCost');
+    let income = gettingInput('income');
+    let totalExpense = gettingInput('totalExpenses');
+    let balance = gettingInput('balance');
+    gettingInput('hiddenText').style.display = 'none';
+    gettingInput('hiddenMessage2').style.display = 'none';
+
+    food.value = '';
+    rent.value = '';
+    cloth.value = '';
+    income.value = '';
+    totalExpense.innerText = '';
+    balance.innerText = '';
+}
 
 calculateBtn.addEventListener('click', function () {
 
@@ -45,10 +62,14 @@ calculateBtn.addEventListener('click', function () {
 
     }
 
-    // clearing fields 
-    food.value ='';
-    rent.value = '';
-    cloth.value = '';
-    income.value ='';
-
 })
+
+// Clearing Fields 
+
+clearBtn.addEventListener('click',function(){
+    clear();
+})
+
+
+
+

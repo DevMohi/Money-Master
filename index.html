@@ -53,9 +53,12 @@
                     <p id="hiddenText" class="text-center fw-bold text-danger" style="display: none;">Enter a positive
                         number or complete all the fields</p> <br>
 
-                    <div class="d-flex justify-content-center">
-                        <button class="text-center btn btn-dark text-white px-3 ms-3"
+                    <div class="d-flex justify-content-evenly">
+                        <button class="text-center btn btn-dark text-white px-3 "
                             id="calculateBtn">Calculate</button>
+
+                        <button class="text-center btn btn-danger text-white px-3 "
+                            id="clearBtn">Clear</button>
                     </div>
 
                     <!-- Total Expenses  -->
@@ -63,16 +66,18 @@
                     <div class="py-2">
                         <h5 class="text-center">Total Expenses: <span id="totalExpenses"></span></h5>
                         <h5 class="text-center">Balance: <span id="balance"></span></h5>
-                        <p id="hiddenMessage2" class="text-center fw-bold text-info"  style="display: none;">Put Expenses less than the income</p> <br>
+                        <p id="hiddenMessage2" class="text-center fw-bold text-info" style="display: none;">Put Expenses
+                            less than the income</p> <br>
                     </div>
 
                     <!-- Save  -->
-                    <div class="d-flex justify-content-center">
+                    <div class="d-flex align-items-center justify-content-evenly">
                         <div class="">
                             <small>Save:</small>
-                            <input type="number" class="py-2 w-25 bg-light text-center text-dark rounded-fill" value="0">
+                            <input type="number" class=" mx-3 py-2 w-25 bg-light text-center text-dark rounded-fill"
+                                value="0">
                             <small>%</small>
-                            <button class="btn btn-dark px-5 ">Save</button>
+                            <button class="btn btn-dark px-5 mx-3 ">Save</button>
                             <h5 class="text-center pt-3 ">Saving Amount: <span></span></h5>
                             <h5 class="text-center">Remaining Balance: <span></span></h5>
                         </div>
