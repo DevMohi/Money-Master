@@ -71,6 +71,7 @@ calculateBtn.addEventListener('click', function () {
         if(expense> incomeInput){
             clear();
             gettingId('hiddenMessage2').style.display = 'block';
+            gettingId('hiddenMessage1').style.display = 'none';
             
         }
         else{
@@ -78,6 +79,7 @@ calculateBtn.addEventListener('click', function () {
             let newBalance = incomeInput - expense;
             balance.innerText =newBalance;
             gettingId('hiddenMessage2').style.display = 'none';
+            gettingId('hiddenMessage1').style.display = 'none';
             
         }
         
