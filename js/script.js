@@ -29,6 +29,7 @@ function clear(){
     displayBlockOrHide('hiddenMessage2', 'none');
     displayBlockOrHide('hiddenMessage3', 'none');
     displayBlockOrHide('hiddenMessage4', 'none');
+    displayBlockOrHide('hiddenMessage5', 'none');
 
     // Clearing all the inputs and innerText 
     food.value = '';
@@ -77,10 +78,16 @@ calculateBtn.addEventListener('click', function () {
         }
         else{
             totalExpense.innerText = expense;
-            let newBalance = incomeInput - expense;
-            balance.innerText =newBalance;
-            displayBlockOrHide('hiddenMessage2', 'none');
-            displayBlockOrHide('hiddenMessage1', 'none');
+            balance.innerText= "";
+            displayBlockOrHide('hiddenMessage5', 'block');
+
+            if(incomeInput > expense){
+                let newBalance = incomeInput - expense;
+                balance.innerText = newBalance;
+                displayBlockOrHide('hiddenMessage2', 'none');
+                displayBlockOrHide('hiddenMessage1', 'none'); 
+                displayBlockOrHide('hiddenMessage5', 'none');
+            }
         }
     }
 })
