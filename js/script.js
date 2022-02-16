@@ -14,8 +14,12 @@ function clear(){
     let income = gettingInput('income');
     let totalExpense = gettingInput('totalExpenses');
     let balance = gettingInput('balance');
+    let savingAmount = gettingInput('savingAmount');
+    let remainingBalance = gettingInput('remaining');
     gettingInput('hiddenText').style.display = 'none';
     gettingInput('hiddenMessage2').style.display = 'none';
+    gettingInput('hiddenMessage3').style.display = 'none';
+
 
     food.value = '';
     rent.value = '';
@@ -23,6 +27,8 @@ function clear(){
     income.value = '';
     totalExpense.innerText = '';
     balance.innerText = '';
+    savingAmount.innerText = '';
+    remainingBalance.innerText = '';
 }
 
 calculateBtn.addEventListener('click', function () {
@@ -87,8 +93,16 @@ saveBtn.addEventListener('click',function(){
     let balance = gettingInput('balance').innerText;
 
     // console.log(saveInputAmount); 
-    savingAmount.innerText = (saveInputAmount/100) * parseFloat(balance);
-    remainingBalance.innerText = parseFloat(balance) - savingAmount.innerText;
+    let savedAmount = (saveInputAmount/100) * parseFloat(balance);
+    
+    if(savedAmount > parseFloat(balance) || isNaN(saveInputAmount)){
+        console.log('error')
+        gettingInput('hiddenMessage3').style.display = 'block';
+    }
+    else{
+        savingAmount.innerText = savedAmount;
+        remainingBalance.innerText = parseFloat(balance) - savingAmount.innerText;
+    }
 })
 
 
