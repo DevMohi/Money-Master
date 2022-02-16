@@ -1,0 +1,44 @@
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+section{
+    max-width: 100%;
+    min-height: 100vh;
+    margin-left: 25px;
+    margin-right: 25px;
+    
+}
+
+.finance-contianer{
+    display: flex;
+    justify-content:space-between;
+    /* border: 2px solid red; */
+
+}
+
+.finance-image-container{
+    border: 2px solid red;
+    flex-basis: 48%;
+    height: 70%;
+
+}
+
+.finance-image img{
+    width: 100%;
+    height: 700px;
+}
+
+.finance-calculator-container{
+    flex-basis: 48%;
+    background-color: lightgrey;
+}
+
+.finance-calculator-title{
+    text-align: center;
+    padding-top: 20px;
+    margin-bottom: 10px;
+}
+
