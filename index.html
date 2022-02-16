@@ -12,18 +12,25 @@
 </head>
 
 <body>
+
     <main>
-        <section class="container">
-            <h1 class="text-center py-4">LCC FINANCE</h1>
+        <!-- -----------------------section starts-------------------------  -->
+        <section class="container py-3">
+            <h1 class="text-center py-4 text-dark">LCC <span class="text-info">FINANCE</span></h1>
+
+            <!-- ------------------------Image div---------------------------->
             <div class="row g-5">
-                <div class="col">
+                <div class="col-12 col-lg-6">
                     <div class="d-flex h-100 ">
                         <img class="img-fluid" src="images/finance.jpg" alt="">
                     </div>
                 </div>
-                <div class="col bg-light container py-3">
 
-                    <!-- Income   -->
+
+                <!-- -------------------------Calculating---------------------->
+                <div class="col-12 col-lg-6 bg-light container py-3">
+
+                    <!-- Income and income field  -->
                     <h4 class="text-center">Income</h4>
 
                     <div class="d-flex align-items-center container">
@@ -31,7 +38,8 @@
                         <input type="text" class="form-control ms-2" id="income">
                     </div>
 
-                    <!-- Expenses  -->
+
+                    <!-- Expenses and the input fields -->
                     <h4 class="text-center py-4">Expenses</h4>
 
                     <div class="d-flex align-items-center container justify-content-center">
@@ -49,8 +57,9 @@
                         <input type="text" class="form-control ms-2" id="clothCost">
                     </div> <br>
 
-                    <!-- Calculate button and the hidden text -->
-                    <p id="hiddenText" class="text-center fw-bold text-danger" style="display: none;">Enter a positive
+                    <!-- Calculate button and the hidden message-->
+
+                    <p id="hiddenMessage1" class="text-center fw-bold text-danger" style="display: none;">Enter a positive
                         number or complete all the fields</p> <br>
 
                     <div class="d-flex justify-content-center">
@@ -59,8 +68,7 @@
                         <button class="text-center btn btn-danger text-white px-3 ms-2" id="clearBtn">Clear All</button>
                     </div>
 
-                    <!-- Total Expenses  -->
-
+                    <!-- Total Expenses and the hidden message  -->
                     <div class="py-2">
                         <h5 class="text-center">Total Expenses: <span id="totalExpenses"></span></h5>
                         <h5 class="text-center">Balance: <span id="balance"></span></h5>
@@ -68,23 +76,27 @@
                             less than the income</p> <br>
                     </div>
 
-                    <!-- Save  -->
+
+                    <!-- Save input and button -->
                     <div class="d-flex align-items-center justify-content-evenly">
-                        <div class="">
-                            <small>Save:</small>
-                            <input type="text" class=" mx-3 py-2 bg-light text-center text-dark rounded-fill font-size"
+                        
+                            <small class="fw-bold">Save:</small>
+                            <input type="text" class=" form-control text-center text-dark rounded font-size w-50"
                                 id="saveInput">
-                            <small>%</small>
-                            <button class="btn btn-success px-5 mx-3 " id="saveBtn">Save</button>
-                            <h5 class="text-center pt-3 ">Saving Amount: <span id="savingAmount"></span></h5>
-                            <h5 class="text-center">New Balance: <span id="remaining"></span></h5>
-                            <p id="hiddenMessage3" class="text-center fw-bold text-info" style="display: none;">Saving Amount Cannot be greater than Current Balance</p> <br>
-                        </div>
+                            <small class="fw-bold ms-2">%</small>
+                            <button class="btn btn-success px-5 mx-3 " id="saveBtn">Save</button>     
                     </div>
 
+                    <!-- saving amount and remaining field  -->
+                    <h5 class="text-center pt-3 ">Saving Amount: <span id="savingAmount"></span></h5>
+                    <h5 class="text-center">New Balance: <span id="remaining"></span></h5>
+                    <p id="hiddenMessage3" class="text-center fw-bold text-info" style="display: none;">Saving Amount Cannot be greater than Current Balance</p> 
+                    <p id="hiddenMessage4" class="text-center fw-bold text-danger" style="display: none;">Enter a positive value or fill the field</p><br>
                 </div>
             </div>
         </section>
+
+        <!-- -------------------------section-end---------------------------- -->
     </main>
 </body>
 

@@ -1,26 +1,32 @@
-let calculateBtn = gettingInput('calculateBtn')
-let clearBtn = gettingInput('clearBtn')
+// getting all the buttons 
+let calculateBtn = gettingId('calculateBtn')
+let clearBtn = gettingId('clearBtn')
 let saveBtn = document.getElementById('saveBtn');
 
-function gettingInput(param) {
+// common gettingId function 
+function gettingId(param) {
     return document.getElementById(param);
 }
 
 // clear function 
 function clear(){
-    let food = gettingInput('foodCost');
-    let rent = gettingInput('rentCost');
-    let cloth = gettingInput('clothCost');
-    let income = gettingInput('income');
-    let totalExpense = gettingInput('totalExpenses');
-    let balance = gettingInput('balance');
-    let savingAmount = gettingInput('savingAmount');
-    let remainingBalance = gettingInput('remaining');
-    gettingInput('hiddenText').style.display = 'none';
-    gettingInput('hiddenMessage2').style.display = 'none';
-    gettingInput('hiddenMessage3').style.display = 'none';
+    // getting all the inputs and innerText 
+    let food = gettingId('foodCost');
+    let rent = gettingId('rentCost');
+    let cloth = gettingId('clothCost');
+    let income = gettingId('income');
+    let totalExpense = gettingId('totalExpenses');
+    let balance = gettingId('balance');
+    let savingAmount = gettingId('savingAmount');
+    let remainingBalance = gettingId('remaining');
+    let saveInput = gettingId('saveInput');
+    gettingId('hiddenMessage1').style.display = 'none';
+    gettingId('hiddenMessage2').style.display = 'none';
+    gettingId('hiddenMessage3').style.display = 'none';
+    gettingId('hiddenMessage4').style.display = 'none';
 
 
+    // Clearing all the inputs and innerText 
     food.value = '';
     rent.value = '';
     cloth.value = '';
@@ -29,46 +35,50 @@ function clear(){
     balance.innerText = '';
     savingAmount.innerText = '';
     remainingBalance.innerText = '';
+    saveInput.value = '';
+    
 }
-
+// calculate onclick 
 calculateBtn.addEventListener('click', function () {
 
-    let food = gettingInput('foodCost');
+    let food = gettingId('foodCost');
     let foodCost = food.value;
 
-    let rent = gettingInput('rentCost');
+    let rent = gettingId('rentCost');
     let rentCost = rent.value;
 
-    let cloth = gettingInput('clothCost');
+    let cloth = gettingId('clothCost');
     let clothCost = cloth.value;
 
     // Income 
-    let income = gettingInput('income');
+    let income = gettingId('income');
     let incomeInput = parseFloat(income.value);
-    let balance = gettingInput('balance');
+    let balance = gettingId('balance');
     
     // Total Expense 
-    let totalExpense = gettingInput('totalExpenses');
+    let totalExpense = gettingId('totalExpenses');
     let expense = parseFloat(foodCost) + parseFloat(rentCost) + parseFloat(clothCost);
 
     // Validating   
-    if (foodCost == "" || foodCost < 0 || rentCost == "" || rentCost < 0 || clothCost == "" || clothCost < 0 || isNaN(expense)){
+    if (foodCost == "" || foodCost < 0 || rentCost == "" || rentCost < 0 || clothCost == "" || clothCost < 0 || income== "" || income<0 || isNaN(expense)){
         // console.log('please enter valid name'); 
-        gettingInput('hiddenText').style.display = 'block';
+        clear();
+        gettingId('hiddenMessage1').style.display = 'block';
     }
     else{
 
         
         // Validating again 
         if(expense> incomeInput){
-            gettingInput('hiddenMessage2').style.display = 'block';
+            clear();
+            gettingId('hiddenMessage2').style.display = 'block';
             
         }
         else{
             totalExpense.innerText = expense;
             let newBalance = incomeInput - expense;
             balance.innerText =newBalance;
-            gettingInput('hiddenMessage2').style.display = 'none';
+            gettingId('hiddenMessage2').style.display = 'none';
             
         }
         
@@ -85,24 +95,41 @@ clearBtn.addEventListener('click',function(){
 // Save button and its uses
 
 saveBtn.addEventListener('click',function(){
-     let saveInput = gettingInput('saveInput');
+     let saveInput = gettingId('saveInput');
      let saveInputAmount  = parseFloat(saveInput.value);
 
-    let savingAmount = gettingInput('savingAmount');
-    let remainingBalance = gettingInput('remaining');
-    let balance = gettingInput('balance').innerText;
-
+    let savingAmount = gettingId('savingAmount');
+    let remainingBalance = gettingId('remaining');
+    let balance = gettingId('balance').innerText;
+    let income = gettingId('income').value;
     // console.log(saveInputAmount); 
-    let savedAmount = (saveInputAmount/100) * parseFloat(balance);
+    let savedAmount = (saveInputAmount/100) * parseFloat(income);
     
-    if(savedAmount > parseFloat(balance) || isNaN(saveInputAmount)){
-        console.log('error')
-        gettingInput('hiddenMessage3').style.display = 'block';
+    // validating isNan and if the value is negative
+    if (isNaN(saveInputAmount) || saveInputAmount < 0){
+        saveInput.value = '';
+        gettingId('hiddenMessage3').style.display = 'none';
+        gettingId('hiddenMessage4').style.display = 'block';
     }
     else{
-        savingAmount.innerText = savedAmount;
-        remainingBalance.innerText = parseFloat(balance) - savingAmount.innerText;
+        if (savedAmount > parseFloat(balance)) {
+            // console.log('error') 
+            saveInput.value = '';
+            gettingId('hiddenMessage3').style.display = 'block';
+            gettingId('hiddenMessage4').style.display = 'none';
+
+        }
+        else {
+            savingAmount.innerText = savedAmount;
+            remainingBalance.innerText = parseFloat(balance) - savingAmount.innerText;
+            gettingId('hiddenMessage3').style.display = 'none';
+            gettingId('hiddenMessage4').style.display = 'none';
+
+        }
     }
+
+    
+    
 })
 
 
