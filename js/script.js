@@ -59,7 +59,7 @@ calculateBtn.addEventListener('click', function () {
     let totalExpense = gettingId('totalExpenses');
     let expense = parseFloat(foodCost) + parseFloat(rentCost) + parseFloat(clothCost);
 
-    // Validating   
+    // Validating empty fields negative number and isNan 
     if (foodCost == "" || foodCost < 0 || rentCost == "" || rentCost < 0 || clothCost == "" || clothCost < 0 || income== "" || income<0 || isNaN(expense)){
         // console.log('please enter valid name'); 
         clear();
@@ -67,8 +67,7 @@ calculateBtn.addEventListener('click', function () {
     }
     else{
 
-        
-        // Validating again 
+        // Validating
         if(expense> incomeInput){
             clear();
             gettingId('hiddenMessage2').style.display = 'block';
@@ -95,14 +94,14 @@ clearBtn.addEventListener('click',function(){
 // Save button and its uses
 
 saveBtn.addEventListener('click',function(){
-     let saveInput = gettingId('saveInput');
-     let saveInputAmount  = parseFloat(saveInput.value);
+    // getting all the values and innerText needed 
 
+    let saveInput = gettingId('saveInput');
+     let saveInputAmount  = parseFloat(saveInput.value);
     let savingAmount = gettingId('savingAmount');
     let remainingBalance = gettingId('remaining');
     let balance = gettingId('balance').innerText;
     let income = gettingId('income').value;
-    // console.log(saveInputAmount); 
     let savedAmount = (saveInputAmount/100) * parseFloat(income);
     
     // validating isNan and if the value is negative
@@ -126,10 +125,7 @@ saveBtn.addEventListener('click',function(){
             gettingId('hiddenMessage4').style.display = 'none';
 
         }
-    }
-
-    
-    
+    }    
 })
 
 
