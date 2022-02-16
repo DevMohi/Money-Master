@@ -125,8 +125,9 @@ saveBtn.addEventListener('click',function(){
             remainingBalance.innerText = '';
         }
         else {
-            savingAmount.innerText = savedAmount;
-            remainingBalance.innerText = parseFloat(balance) - savingAmount.innerText;
+            savingAmount.innerText = savedAmount.toFixed(2);
+            let balanceLeft = parseFloat(balance) - savingAmount.innerText;
+            remainingBalance.innerText = balanceLeft.toFixed(2);
             displayBlockOrHide('hiddenMessage3', 'none');
             displayBlockOrHide('hiddenMessage4', 'none');
         }
