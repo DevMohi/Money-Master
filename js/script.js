@@ -11,37 +11,31 @@ function gettingId(param) {
 function displayBlockOrHide(id , noneOrBlock){
     gettingId(id).style.display = noneOrBlock;
 }
-
-// clear function 
-function clear(){
-    // getting all the inputs and innerText 
-    let food = gettingId('foodCost');
-    let rent = gettingId('rentCost');
-    let cloth = gettingId('clothCost');
-    let income = gettingId('income');
-    let totalExpense = gettingId('totalExpenses');
-    let balance = gettingId('balance');
-    let savingAmount = gettingId('savingAmount');
-    let remainingBalance = gettingId('remaining');
-    let saveInput = gettingId('saveInput');
-
+function displayHidden(){
     displayBlockOrHide('hiddenMessage1', 'none');
     displayBlockOrHide('hiddenMessage2', 'none');
     displayBlockOrHide('hiddenMessage3', 'none');
     displayBlockOrHide('hiddenMessage4', 'none');
     displayBlockOrHide('hiddenMessage5', 'none');
+}
 
-    // Clearing all the inputs and innerText 
-    food.value = '';
-    rent.value = '';
-    cloth.value = '';
-    income.value = '';
-    totalExpense.innerText = '';
-    balance.innerText = '';
-    savingAmount.innerText = '';
-    remainingBalance.innerText = '';
-    saveInput.value = '';
-    
+// clear function 
+function clear(){
+// getting all the values and innerText to clear the fields.
+    gettingId('foodCost').value = "";
+    gettingId('rentCost').value = "";
+    gettingId('clothCost').value = "";
+    gettingId('income').value = "";
+    gettingId('totalExpenses').innerText = "";
+    gettingId('balance').innerText = "";
+    gettingId('savingAmount').innerText = "";
+    gettingId('remaining').innerText = "";
+    gettingId('saveInput').value = "";
+    displayBlockOrHide('hiddenMessage1', 'none');
+    displayBlockOrHide('hiddenMessage2', 'none');
+    displayBlockOrHide('hiddenMessage3', 'none');
+    displayBlockOrHide('hiddenMessage4', 'none');
+    displayBlockOrHide('hiddenMessage5', 'none');
 }
 // calculate onclick 
 calculateBtn.addEventListener('click', function () {
@@ -70,21 +64,19 @@ calculateBtn.addEventListener('click', function () {
     else{
         // Validating
         if(expense> incomeInput){
-            
             displayBlockOrHide('hiddenMessage2', 'block');
-            displayBlockOrHide('hiddenMessage1', 'none');    
+            displayBlockOrHide('hiddenMessage1', 'none');   
+            displayBlockOrHide('hiddenMessage5', 'none');
+            balance.innerText = "";
         }
         else{
             totalExpense.innerText = expense;
             balance.innerText= "";
             displayBlockOrHide('hiddenMessage5', 'block');
-
             if(incomeInput > expense){
                 let newBalance = incomeInput - expense;
                 balance.innerText = newBalance;
-                displayBlockOrHide('hiddenMessage2', 'none');
-                displayBlockOrHide('hiddenMessage1', 'none'); 
-                displayBlockOrHide('hiddenMessage5', 'none');
+                displayHidden();
             }
         }
     }
@@ -95,9 +87,7 @@ clearBtn.addEventListener('click',function(){
     clear();
 })
 
-
 // Save button and its uses
-
 saveBtn.addEventListener('click',function(){
     // getting all the values and innerText needed 
     let saveInput = gettingId('saveInput');
@@ -124,22 +114,17 @@ saveBtn.addEventListener('click',function(){
             displayBlockOrHide('hiddenMessage4', 'none');
             savingAmount.innerText = '';
             remainingBalance.innerText = '';
-
         }
         else if (savedAmount < parseFloat(balance)) {
-        
             savingAmount.innerText = savedAmount.toFixed(2);
             let balanceLeft = parseFloat(balance) - savingAmount.innerText;
             remainingBalance.innerText = balanceLeft.toFixed(2);
-            displayBlockOrHide('hiddenMessage3', 'none');
-            displayBlockOrHide('hiddenMessage4', 'none');
+            displayHidden();
         }
-
         else{
             savingAmount.innerText = '';
             remainingBalance.innerText = '';
         }
-
     }    
 })
 
