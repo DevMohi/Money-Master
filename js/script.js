@@ -58,7 +58,7 @@ calculateBtn.addEventListener('click', function () {
     let expense = parseFloat(foodCost) + parseFloat(rentCost) + parseFloat(clothCost);
 
     // Validating empty fields negative number and isNan 
-    if (foodCost == "" || foodCost < 0 || rentCost == "" || rentCost < 0 || clothCost == "" || clothCost < 0 || income== "" || income<0 || isNaN(expense)){
+    if (foodCost == "" || foodCost < 0 || rentCost == "" || rentCost < 0 || clothCost == "" || clothCost < 0 || incomeInput== "" || incomeInput<0 || isNaN(expense)){
         clear();
         displayBlockOrHide('hiddenMessage1', 'block');
     }
