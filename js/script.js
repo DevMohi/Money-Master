@@ -48,10 +48,8 @@ calculateBtn.addEventListener('click', function () {
 
     let food = gettingId('foodCost');
     let foodCost = food.value;
-
     let rent = gettingId('rentCost');
     let rentCost = rent.value;
-
     let cloth = gettingId('clothCost');
     let clothCost = cloth.value;
 
@@ -72,7 +70,7 @@ calculateBtn.addEventListener('click', function () {
     else{
         // Validating
         if(expense> incomeInput){
-            clear();
+            
             displayBlockOrHide('hiddenMessage2', 'block');
             displayBlockOrHide('hiddenMessage1', 'none');    
         }
@@ -99,6 +97,7 @@ clearBtn.addEventListener('click',function(){
 
 
 // Save button and its uses
+
 saveBtn.addEventListener('click',function(){
     // getting all the values and innerText needed 
     let saveInput = gettingId('saveInput');
@@ -114,6 +113,8 @@ saveBtn.addEventListener('click',function(){
         saveInput.value = '';
         displayBlockOrHide('hiddenMessage3', 'none');
         displayBlockOrHide('hiddenMessage4', 'block');
+        savingAmount.innerText = '';
+        remainingBalance.innerText = '';
     }
     else{
         if (savedAmount > parseFloat(balance)) {
@@ -123,14 +124,22 @@ saveBtn.addEventListener('click',function(){
             displayBlockOrHide('hiddenMessage4', 'none');
             savingAmount.innerText = '';
             remainingBalance.innerText = '';
+
         }
-        else {
+        else if (savedAmount < parseFloat(balance)) {
+        
             savingAmount.innerText = savedAmount.toFixed(2);
             let balanceLeft = parseFloat(balance) - savingAmount.innerText;
             remainingBalance.innerText = balanceLeft.toFixed(2);
             displayBlockOrHide('hiddenMessage3', 'none');
             displayBlockOrHide('hiddenMessage4', 'none');
         }
+
+        else{
+            savingAmount.innerText = '';
+            remainingBalance.innerText = '';
+        }
+
     }    
 })
 
