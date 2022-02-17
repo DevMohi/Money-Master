@@ -11,6 +11,7 @@ function gettingId(param) {
 function displayBlockOrHide(id , noneOrBlock){
     gettingId(id).style.display = noneOrBlock;
 }
+// hiding all the block messages 
 function displayHidden(){
     displayBlockOrHide('hiddenMessage1', 'none');
     displayBlockOrHide('hiddenMessage2', 'none');
